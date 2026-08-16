@@ -1,11 +1,17 @@
+import {useState} from "react"
 function Register(){
+    let[FirstName,setFirstName]=useState("")
+
+    function formSubmit(){
+        console.log(FirstName)
+    }
     return(
         <section id="register-form>">
             <form>
                 <h1>Register</h1>
                 <div>
                     <label>First Name</label>
-                    <input type="text" name="FirstName" />
+                    <input type="text" name="FirstName" onInput={(e)=>setFirstName(e.target.value)}/>
                 </div>
                 <div>
                     <label>Last Name</label>
@@ -24,7 +30,7 @@ function Register(){
                 <input type="password" name="ConfirmPassword" />    
                 </div>
                 <div>
-                    <button type="submit">SignUp   
+                    <button type="button" onClick={formSubmit}>SignUp   
                         </button>
                 </div>         
             </form>
