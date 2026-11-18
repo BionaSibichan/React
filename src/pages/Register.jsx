@@ -1,9 +1,20 @@
 import {useState} from "react"
 function Register(){
-    let[FirstName,setFirstName]=useState("")
+    // let[FirstName,setFirstName]=useState("")
+    let[formData,setFormData]=useState({
+        FirstName:"",
+        LastName:"",
+        Email:"",
+        Password:"",
+        ConfirmPassword:""
+    })
+    const updateformData=(e)=>{
+        setFormData({...formData,[e.target.name]:e.target.value})
+
+    }
 
     function formSubmit(){
-        console.log(FirstName)
+        console.log(formData)
     }
     return(
         <section id="register-form>">
@@ -11,23 +22,23 @@ function Register(){
                 <h1>Register</h1>
                 <div>
                     <label>First Name</label>
-                    <input type="text" name="FirstName" onInput={(e)=>setFirstName(e.target.value)}/>
+                    <input type="text" name="FirstName" onInput={updateformData}/>
                 </div>
                 <div>
                     <label>Last Name</label>
-                    <input type="text" name="LastName" />
+                    <input type="text" name="LastName" onInput={updateformData} />
                 </div>
                 <div>
                     <label>Email</label>
-                <input type="email" name="Email" />
+                <input type="email" name="Email" onInput={updateformData}/>
                 </div>
                 <div>
                     <label>Create Password</label>
-                <input type="password" name="Password" />
+                <input type="password" name="Password" onInput={updateformData}/>
                 </div>
                 <div>
                     <label>Confirm Password</label>
-                <input type="password" name="ConfirmPassword" />    
+                <input type="password" name="ConfirmPassword" onInput={updateformData} />    
                 </div>
                 <div>
                     <button type="button" onClick={formSubmit}>SignUp   
